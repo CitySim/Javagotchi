@@ -10,7 +10,6 @@ public class GotchiScreen implements IDrawable {
 		// TODO Auto-generated method stub
 
 		String[] gotchiArt = gotchi.getImage();
-		int imageWidth = gotchiArt[0].length();
 
 		// print image
 		for (int i = 0; i < gotchiArt.length; i++) {

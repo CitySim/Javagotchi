@@ -1,13 +1,13 @@
 import java.util.Date;
 
 public abstract class Gotchi {
-
+	private long lastTick = 0;
 	private GotchiState state = GotchiState.DEFAULT;
 	private String name = "";
-	private Date birth = new Date();
-	
+	private double age = 0.0;
+
 	private int starvation = 0;
-	
+
 	// getter setter start
 
 	public GotchiState getState() {
@@ -22,8 +22,8 @@ public abstract class Gotchi {
 		return name;
 	}
 
-	public Date getBirth() {
-		return birth;
+	public double getAge() {
+		return age;
 	}
 
 	public int getStarvation() {
@@ -38,7 +38,38 @@ public abstract class Gotchi {
 
 	public Gotchi(String name) {
 		this.name = name;
+		lastTick = System.currentTimeMillis();
 	}
 
-	public abstract String[] getImage();
+	public abstract String[] getSleepImage();
+
+	public abstract String[] getPlayImage();
+
+	public abstract String[] getEatImage();
+
+	public abstract String[] getDefaultImage();
+
+	public String[] getImage() {
+		switch (state) {
+		case EATING:
+			return getEatImage();
+		case PLAYING:
+			return getDefaultImage();
+		case SLEEPING:
+			return getSleepImage();
+		default:
+		case DEFAULT:
+			return getDefaultImage();
+		}
+	}
+	
+	public void Update(long tick)
+	{
+		// only update all 2s
+		if (tick - lastTick > 2000) {
+			age += 0.48; // randomly chosen random number
+			
+			lastTick = tick;
+		}
+	}
 }

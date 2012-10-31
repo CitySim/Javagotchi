@@ -25,36 +25,13 @@ public class MainScreen implements IDrawable {
 				System.out.println("create");
 				break;
 			case GotchiScreen:
-				new GotchiScreen(new DummyGotchi("Dummy")).Draw();
+				new GotchiScreen(new Dog("Dummy")).Draw();
 				break;
 			case ChooseAction:
 				System.out.println("action");
 				break;
 			}
-/*
-if (gotchi != null) {
-				System.out.println("║                                                                              ║");
-				System.out.println("║    /(                                                                        ║");
-				System.out.println("║    //\\                                                                       ║");
-				System.out.println("║   //   )_.-\"\"\"-._,-\"\"-.                                                      ║");
-				System.out.println("║   \\ ^,'_\\     /_\\     )                                                      ║");
-				System.out.println("║    `./ /O\\|   |/O\\   /                                                       ║");
-				System.out.println("║      \\ \\_/|   |\\_/ \\_/                                                       ║");
-				System.out.println("║       \\ .'  _  `. /                                                          ║");
-				System.out.println("║   .-.  ( .:(_):. )  ,-.                                                      ║");
-				System.out.println("║  (   `._`._.-._,'_,'   )                                                     ║");
-				System.out.println("║   )                   (                                                      ║");
-				System.out.println("║  (   .-------------.   )                                                     ║");
-				System.out.println("║   `-'               `-'                                                      ║");
-				System.out.println("║                                                                              ║");
 
-
-			} else {
-				// print
-				System.out.println("║ Kein Gotchi gefunden. Drücke [E] um ein neues Gotchi zu wählen               ║");
-				System.out.println("╚══════════════════════════════════════════════════════════════════════════════╝");
-			}
- */
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
