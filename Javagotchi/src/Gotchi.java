@@ -1,5 +1,3 @@
-import java.util.Date;
-
 public abstract class Gotchi {
 	private long lastTick = 0;
 	private GotchiState state = GotchiState.DEFAULT;

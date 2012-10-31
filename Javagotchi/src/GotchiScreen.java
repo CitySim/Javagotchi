@@ -1,8 +1,18 @@
+import java.io.IOException;
+
 public class GotchiScreen implements IDrawable {
 	private Gotchi gotchi = null;
 
 	public GotchiScreen(Gotchi gotchi) {
 		this.gotchi = gotchi;
+
+		/*char test = ' ';
+		try {
+			test = (char)System.in.read();
+		} catch (IOException e) {
+		}
+		System.out.print(test);
+		*/
 	}
 
 	@Override
@@ -28,7 +38,7 @@ public class GotchiScreen implements IDrawable {
 	}
 
 	private String centerString(String content, int len) {
-		content = padLeft(content, (len  + content.length()) / 2);
+		content = padLeft(content, (len + content.length()) / 2);
 		content = padRight(content, len);
 		return content;
 	}

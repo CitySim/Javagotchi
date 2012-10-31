@@ -4,31 +4,19 @@ public class Dog extends Gotchi {
 		super(name);
 		// TODO Auto-generated constructor stub
 	}
-
-	@Override
-	public String[] getImage() {
+	
+	public String[] getDefaultImage() {
 		String[] r = new String[6];
-		r[0] = ("         .-\"-.     ");
-		r[1] = ("         /|6 6|\\   ");
-		r[2] = ("        {/(_0_)\\}  ");
-		r[3] = ("         _/ ^ \\_   ");
-		r[4] = ("        (/ /^\\ \\)-'");
-		r[5] = ("         \"\"' '\"\"   ");
+		r[0] = (" .-\"-.     ");
+		r[1] = (" /|6 6|\\   ");
+		r[2] = ("{/(_0_)\\}  ");
+		r[3] = (" _/ ^ \\_   ");
+		r[4] = ("(/ /^\\ \\)-'");
+		r[5] = (" \"\"' '\"\"   ");
 		return r;
 	}
 	
-	public String[] defaultImage() {
-		String[] r = new String[6];
-		r[0] = ("         .-\"-.     ");
-		r[1] = ("         /|6 6|\\   ");
-		r[2] = ("        {/(_0_)\\}  ");
-		r[3] = ("         _/ ^ \\_   ");
-		r[4] = ("        (/ /^\\ \\)-'");
-		r[5] = ("         \"\"' '\"\"   ");
-		return r;
-	}
-	
-	public String[] eat() {
+	public String[] getEatImage() {
 		String[] r = new String[12];
 		r[0]  = "  /(                   ";
 		r[1]  = "  //\\\\                 ";
@@ -45,18 +33,18 @@ public class Dog extends Gotchi {
 		return r;
 	}
 	
-	public String[] play() {
+	public String[] getPlayImage() {
 		String[] r = new String[6];
-		r[0] = ("                  ;~~,__ ");
-		r[1] = ("   :-....,-------'`-'._.'");
-		r[2] = ("    `-,,,  ,       ;'~~' ");
-		r[3] = ("       ,'_,'~.__; '--.   ");
-		r[4] = ("      //'       ````(;   ");
-		r[5] = ("     `-'                 ");
+		r[0] = ("               ;~~,__ ");
+		r[1] = (":-....,-------'`-'._.'");
+		r[2] = (" `-,,,  ,       ;'~~' ");
+		r[3] = ("    ,'_,'~.__; '--.   ");
+		r[4] = ("   //'       ````(;   ");
+		r[5] = ("  `-'                 ");
 		return r;
 	}
 	
-	public String[] sleep() {
+	public String[] getSleepImage() {
 		String[] r = new String[4];
 		r[0] = ("    	  .\"-.              ");
 		r[1] = ("   	 /x  | _o.----.	   _");

@@ -1,6 +1,3 @@
-import java.io.IOException;
-import java.util.ArrayList;
-
 public class MainScreen implements IDrawable {
 	private Gotchi gotchi = null;
 	private GameState state = GameState.GotchiScreen;
