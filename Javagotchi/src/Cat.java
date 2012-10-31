@@ -3,16 +3,61 @@ public class Cat extends Gotchi {
 		super(name);
 	}
 
-	public void sleep() {
-		System.out.println("        |\\      _,,,---,,_  ");
-		System.out.println("  PRrrr /,`.-'`'    -.  ;-;;,_ ");
-		System.out.println("       |,4-  ) )-,_. ,\\ (  `'-'");
-		System.out.println("      '---''(_/--'  `-'\\_)      ");
-	}
-
 	@Override
 	public String[] getImage() {
-		// TODO Auto-generated method stub
-		return null;
+		String[] r = new String[10];
+		r[0] = (" ,_     _        ");
+		r[1] = (" |\\_,-~/         ");
+		r[2] = (" / _  _ |    ,--.");
+		r[3] = ("(  @  @ )   / ,-'");
+		r[4] = (" \\  _T_/-._( (   ");
+		r[5] = (" /         `. \\  ");
+		r[6] = ("|         _  \\ | ");
+		r[7] = (" \\ \\ ,  /      | ");
+		r[8] = ("  || |-_\\__   /  ");
+		r[9] = (" ((_/`(____,-'   ");
+		return r;
+	}
+	
+	public String[] defaultImage() {
+		String[] r = new String[10];
+		r[0] = (" ,_     _        ");
+		r[1] = (" |\\_,-~/         ");
+		r[2] = (" / _  _ |    ,--.");
+		r[3] = ("(  @  @ )   / ,-'");
+		r[4] = (" \\  _T_/-._( (   ");
+		r[5] = (" /         `. \\  ");
+		r[6] = ("|         _  \\ | ");
+		r[7] = (" \\ \\ ,  /      | ");
+		r[8] = ("  || |-_\\__   /  ");
+		r[9] = (" ((_/`(____,-'   ");
+		return r;
+	}
+	
+	public String[] eat() {
+		String[] r = new String[5];
+		r[0] = ("              |\\__/,|   (`\\");
+		r[1] = ("              |o o  |__ _) )");
+		r[2] = ("       	 _.( T   )  `  / ");
+		r[3] = (" n n._	((_ `^--' /_<  \\     ");
+		r[4] = (" <\" _ }=- `` `-'(((/  (((/    ");
+		return r;
+	}
+	
+	public String[] play() {
+		String[] r = new String[3];
+		r[0] = ("   |\\__/,|   (`\\  ");
+		r[1] = ("  _.|o o  |_   ) )");
+		r[2] = ("-(((---(((--------");
+		return r;
+	}
+	
+	public String[] sleep() {
+		String[] r = new String[4];
+		r[0] = ("        |\\      _,,,---,,_      ");
+		r[1] = ("  PRrrr /,`.-'`'    -.  ;-;;,_  ");
+		r[2] = ("       |,4-  ) )-,_. ,\\ (  `'-' ");
+		r[3] = ("      '---''(_/--'  `-'\\_)      ");
+		return r;
 	}
 }
