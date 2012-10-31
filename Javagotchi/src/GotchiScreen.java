@@ -14,11 +14,11 @@ public class GotchiScreen implements IDrawable {
 
 		// print image
 		for (int i = 0; i < gotchiArt.length; i++) {
-			System.out.println("║ " + padLeft(gotchiArt[i], (80 - 2) / 2));
+			System.out.println("║" + centerString(gotchiArt[i], 80 - 2) + "║");
 		}
 		// fill up to always have 15 lines for image
 		for (int i = gotchiArt.length; i < 15; i++) {
-			System.out.println("║ ");
+			System.out.println("║                                                                              ║");
 		}
 
 		// print the Footer
@@ -28,9 +28,22 @@ public class GotchiScreen implements IDrawable {
 		System.out.println("╚═════════════╧════════════════╧═════════════════╧════════════╧════════════════╝");
 	}
 
+	private String centerString(String content, int len) {
+		content = padLeft(content, (len  + content.length()) / 2);
+		content = padRight(content, len);
+		return content;
+	}
+
 	private String padLeft(String content, int len) {
 		while (content.length() < len) {
 			content = " " + content;
+		}
+		return content;
+	}
+
+	private String padRight(String content, int len) {
+		while (content.length() < len) {
+			content = content + " ";
 		}
 		return content;
 	}
