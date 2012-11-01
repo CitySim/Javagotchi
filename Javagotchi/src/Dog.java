@@ -7,7 +7,7 @@ public class Dog extends Gotchi {
 	
 	public String[] getDefaultImage() {
 		String[] r = new String[6];
-		r[0] = (" .-\"-.     ");
+		r[0] = ("  .-\"-.     ");
 		r[1] = (" /|6 6|\\   ");
 		r[2] = ("{/(_0_)\\}  ");
 		r[3] = (" _/ ^ \\_   ");

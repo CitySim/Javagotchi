@@ -1,9 +1,14 @@
-public class MainScreen implements IDrawable {
+import java.awt.event.KeyEvent;
+
+@SuppressWarnings("serial")
+public class MainScreen extends ConsoleKeyListener implements IDrawable {
 	private Gotchi gotchi = null;
 	private GameState state = GameState.GotchiScreen;
+	private IScreen activeScreen = null;
 
 	public void start() {
-
+		gotchi = new Cat("Murmur");
+		activeScreen = new GotchiScreen(gotchi);
 		Draw();
 	}
 
@@ -22,7 +27,7 @@ public class MainScreen implements IDrawable {
 				System.out.println("create");
 				break;
 			case GotchiScreen:
-				new GotchiScreen(new Dog("Dummy")).Draw();
+				activeScreen.Draw();
 				break;
 			case ChooseAction:
 				System.out.println("action");
@@ -47,6 +52,18 @@ public class MainScreen implements IDrawable {
 		}
 	}
 
+	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode() == 27)
+		{
+			System.exit(0);
+		}
+		else
+		{
+			activeScreen.keyReleased(e);
+			//System.out.println(e.getKeyCode());
+		}
+	}
+	
 	public enum GameState {
 		GotchiScreen, CreateGotchi, ChooseAction
 	}

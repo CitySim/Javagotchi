@@ -1,18 +1,16 @@
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-public class GotchiScreen implements IDrawable {
+public class GotchiScreen implements IScreen {
 	private Gotchi gotchi = null;
 
 	public GotchiScreen(Gotchi gotchi) {
 		this.gotchi = gotchi;
 
-		/*char test = ' ';
-		try {
-			test = (char)System.in.read();
-		} catch (IOException e) {
-		}
-		System.out.print(test);
-		*/
+		/*
+		 * char test = ' '; try { test = (char)System.in.read(); } catch
+		 * (IOException e) { } System.out.print(test);
+		 */
 	}
 
 	@Override
@@ -55,5 +53,17 @@ public class GotchiScreen implements IDrawable {
 			content = content + " ";
 		}
 		return content;
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		switch (e.getKeyCode()) {
+		case 69: // e
+			System.out.println("e");
+		case 37: // left
+		case 38: // up
+		case 39: // right
+		case 40: // down
+		}
 	}
 }
