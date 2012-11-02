@@ -1,8 +1,15 @@
+import java.util.Random;
+
 public abstract class Gotchi {
 	private long lastTick = 0;
 	private GotchiState state = GotchiState.DEFAULT;
 	private String name = "";
 	private double age = 0.0;
+	
+	private int hunger = 0;
+	private int muedigkeit = 0;
+	private int langeweile = 0;
+	private int updatePlus;
 
 	private int starvation = 0;
 
@@ -68,6 +75,43 @@ public abstract class Gotchi {
 			age += 0.48; // randomly chosen random number
 			
 			lastTick = tick;
+		}
+	}
+	
+	// erhöht einen zufälligen Statuswert um 1 oder ruft mit 25%iger Chance rekursiv
+	// die überladene Methode auf und erhöht einen zufälligen Statuswert um die Anzahl der Durchgänge
+	
+	public void updateStats() {
+		Random rand = new Random();
+		int randomNumber = rand.nextInt(100);
+		
+		if (randomNumber < 26) {
+			hunger++;
+		} else if (randomNumber < 51) {
+			muedigkeit++;
+		} else if (randomNumber < 76) {
+			langeweile++;
+		} else {
+			updatePlus = 2;
+			this.updateStats(updatePlus);
+		}
+	}
+	
+	// Überladung
+	
+	public void updateStats(int plus) {
+		Random rand = new Random();
+		int randomNumber = rand.nextInt(100);
+		
+		if (randomNumber < 26) {
+			hunger = hunger + plus;
+		} else if (randomNumber < 51) {
+			muedigkeit = muedigkeit + plus;
+		} else if (randomNumber < 76) {
+			langeweile = langeweile + plus;
+		} else {
+			updatePlus++;
+			this.updateStats(updatePlus);
 		}
 	}
 }
