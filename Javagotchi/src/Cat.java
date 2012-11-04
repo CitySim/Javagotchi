@@ -17,25 +17,35 @@ public class Cat extends Gotchi {
 		r[9] = (" ((_/`(____,-'   ");
 		return r;
 	}
-	
+
 	public String[] getEatImage() {
 		String[] r = new String[5];
 		r[0] = ("              |\\__/,|   (`\\");
 		r[1] = ("              |o o  |__ _) )");
-		r[2] = ("       	 _.( T   )  `  / ");
-		r[3] = (" n n._	((_ `^--' /_<  \\     ");
+		r[2] = ("            _.( T   )  `  /");
+		r[3] = (" n n._ ((_ `^--' /_<  \\     ");
 		r[4] = (" <\" _ }=- `` `-'(((/  (((/    ");
 		return r;
 	}
-	
+
+	private int playFrameCounter = 0;
+
 	public String[] getPlayImage() {
 		String[] r = new String[3];
-		r[0] = ("   |\\__/,|   (`\\  ");
-		r[1] = ("  _.|o o  |_   ) )");
-		r[2] = ("-(((---(((--------");
+		if (playFrameCounter == 0) {
+			r[0] = ("    |\\__/,|   (`\\ ");
+			r[1] = ("  _.|o o  |_   ) )");
+			r[2] = ("-(((---(((-e-------");
+			playFrameCounter = 1;
+		} else {
+			r[0] = ("                   ");
+			r[1] = ("                   ");
+			r[2] = ("-(((---(((---------");
+			playFrameCounter = 0;
+		}
 		return r;
 	}
-	
+
 	public String[] getSleepImage() {
 		String[] r = new String[4];
 		r[0] = ("      |\\      _,,,---,,_      ");

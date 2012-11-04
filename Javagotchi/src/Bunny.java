@@ -40,9 +40,9 @@ public class Bunny extends Gotchi {
 	
 	public String[] getSleepImage() {
 		String[] r = new String[10];
-		r[0] = ("         ____     ");
+		r[0] = ("          ____    ");
 		r[1] = ("z     z  /    \\   ");
-		r[2] = ("        /     \\   ");
+		r[2] = ("         /     \\\\   ");
 		r[3] = ("    Z   ======= ) ");
 		r[4] = ("         \\- -/ <> ");
 		r[5] = ("    z ___/ ^ \\___ ");

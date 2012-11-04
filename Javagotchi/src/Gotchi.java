@@ -66,7 +66,7 @@ public abstract class Gotchi {
 		case EATING:
 			return getEatImage();
 		case PLAYING:
-			return getDefaultImage();
+			return getPlayImage();
 		case SLEEPING:
 			return getSleepImage();
 		default:
