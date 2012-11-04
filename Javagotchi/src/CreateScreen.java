@@ -46,7 +46,5 @@ public class CreateScreen implements IScreen {
 		if(mainScreen.getGotchi() != null) {
 			mainScreen.setActiveScreen(new GotchiScreen(mainScreen.getGotchi()));
 		}
-
-		System.exit(0);
 	}
 }
