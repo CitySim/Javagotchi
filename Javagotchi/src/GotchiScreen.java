@@ -10,7 +10,7 @@ public class GotchiScreen implements IScreen {
 
 	@Override
 	public void Draw() {
-		if (showActionSelect) {
+		if (showActionSelect && gotchi.getState() == GotchiState.DEFAULT) {
 			System.out.println("║ Aktion durchführen                                                           ║");
 			System.out.println("║                                                                              ║");
 			System.out.println("║ Bitte wähle eines der verfügbaren Aktionnen!                                 ║");
@@ -26,9 +26,25 @@ public class GotchiScreen implements IScreen {
 			System.out.println("║ Drücke erneut [e] zum abzubrechen                                            ║");
 			System.out.println("║                                                                              ║");
 			System.out.println("║                                                                              ║");
+		} else if (showActionSelect && gotchi.getState() != GotchiState.DEFAULT) {
+			System.out.println("║ Aktion durchführen                                                           ║");
+			System.out.println("║                                                                              ║");
+			System.out.println("║ Dein Gotchi führt gerade eine andere Aktion aus!                             ║");
+			System.out.println("║                                                                              ║");
+			System.out.println("║ Bitte warte bis sie abgeslossen ist!                                         ║");
+			System.out.println("║                                                                              ║");
+			System.out.println("║                                                                              ║");
+			System.out.println("║                                                                              ║");
+			System.out.println("║                                                                              ║");
+			System.out.println("║                                                                              ║");
+			System.out.println("║                                                                              ║");
+			System.out.println("║                                                                              ║");
+			System.out.println("║ Drücke erneut [e] zum abzubrechen                                            ║");
+			System.out.println("║                                                                              ║");
+			System.out.println("║                                                                              ║");
 		} else {
 			String[] gotchiArt = gotchi.getImage();
-			
+
 			int linesPrinted = 0;
 			// fill up to always have 15 lines for image
 			for (int i = 0; i < (15 - gotchiArt.length) / 2; i++) {
