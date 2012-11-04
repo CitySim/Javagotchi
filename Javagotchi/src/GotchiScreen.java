@@ -1,5 +1,4 @@
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 
 public class GotchiScreen implements IScreen {
 	private Gotchi gotchi = null;

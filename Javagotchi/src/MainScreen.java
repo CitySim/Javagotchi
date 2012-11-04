@@ -1,6 +1,5 @@
 import java.awt.event.KeyEvent;
 
-@SuppressWarnings("serial")
 public class MainScreen extends ConsoleKeyListener implements IDrawable {
 	private Gotchi gotchi = null;
 	private GameState state = GameState.GotchiScreen;
