@@ -28,13 +28,20 @@ public class GotchiScreen implements IScreen {
 			System.out.println("║                                                                              ║");
 		} else {
 			String[] gotchiArt = gotchi.getImage();
-
+			
+			int linesPrinted = 0;
+			// fill up to always have 15 lines for image
+			for (int i = 0; i < (15 - gotchiArt.length) / 2; i++) {
+				System.out.println("║                                                                              ║");
+				linesPrinted++;
+			}
 			// print image
 			for (int i = 0; i < gotchiArt.length; i++) {
 				System.out.println("║" + Utils.centerString(gotchiArt[i], 80 - 2) + "║");
+				linesPrinted++;
 			}
 			// fill up to always have 15 lines for image
-			for (int i = gotchiArt.length; i < 15; i++) {
+			for (int i = linesPrinted; i < 15; i++) {
 				System.out.println("║                                                                              ║");
 			}
 		}
