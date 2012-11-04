@@ -6,7 +6,7 @@ import java.util.Random;
 public abstract class Gotchi {
 	private GotchiState state = GotchiState.DEFAULT;
 	private String name = "";
-	
+
 	private double age = 0.0;
 	private int hunger = 0;
 	private int muedigkeit = 0;
@@ -42,7 +42,7 @@ public abstract class Gotchi {
 	public int getLangeweile() {
 		return langeweile;
 	}
-	
+
 	// getter setter end
 
 	public Gotchi(String name) {
@@ -59,6 +59,7 @@ public abstract class Gotchi {
 
 	/**
 	 * gibt anhand des Status das passende Bild zurück
+	 * 
 	 * @return
 	 */
 	public String[] getImage() {
@@ -96,11 +97,40 @@ public abstract class Gotchi {
 			updatePlus = 2;
 			Update(updatePlus);
 		}
-		
+
+		switch (state) {
+		case EATING:
+			hunger -= 10;
+			break;
+		case SLEEPING:
+			muedigkeit -= 5;
+			break;
+		case PLAYING:
+			langeweile -= 5;
+			break;
+		}
+
+		// werte dürfen nicht negativ sein
+		if (hunger < 0)
+			hunger = 0;
+		if (muedigkeit < 0)
+			muedigkeit = 0;
+		if (langeweile < 0)
+			langeweile = 0;
+
 		// Wenn einer der Werte über 500 ist das Der Gotchi tot
 		if (hunger > 500 || muedigkeit > 500 || langeweile > 500) {
 			System.out.println("\nDein Javagotchi ist gestorben!!!!!!!!!11\n");
 			System.exit(0);
+		}
+
+		// nach einer gweissen zeit hört der Gotchi mit einer aktion auf und
+		// weschelt zurück zum Default status
+		if (state != GotchiState.DEFAULT) {
+			int stopAction = rand.nextInt(100);
+			if (stopAction > 95) {
+				state = GotchiState.DEFAULT;
+			}
 		}
 	}
 
