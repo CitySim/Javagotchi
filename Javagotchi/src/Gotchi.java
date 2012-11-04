@@ -1,5 +1,8 @@
 import java.util.Random;
 
+/**
+ * specihert und simuliert ein "Gotchi"
+ */
 public abstract class Gotchi {
 	private GotchiState state = GotchiState.DEFAULT;
 	private String name = "";
@@ -54,6 +57,10 @@ public abstract class Gotchi {
 
 	public abstract String[] getDefaultImage();
 
+	/**
+	 * gibt anhand des Status das passende Bild zurück
+	 * @return
+	 */
 	public String[] getImage() {
 		switch (state) {
 		case EATING:
@@ -88,6 +95,12 @@ public abstract class Gotchi {
 		} else {
 			updatePlus = 2;
 			Update(updatePlus);
+		}
+		
+		// Wenn einer der Werte über 500 ist das Der Gotchi tot
+		if (hunger > 500 || muedigkeit > 500 || langeweile > 500) {
+			System.out.println("\nDein Javagotchi ist gestorben!!!!!!!!!11\n");
+			System.exit(0);
 		}
 	}
 

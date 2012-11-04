@@ -2,16 +2,37 @@ import java.awt.event.KeyEvent;
 
 public class MainScreen extends ConsoleKeyListener implements IDrawable {
 	private Gotchi gotchi = null;
-	private GameState state = GameState.GotchiScreen;
+	
 	private IScreen activeScreen = null;
+	private GotchiScreen gotchiScreen = null;
+	private CreateScreen createScreen = null;
+
+	public IScreen getActiveScreen() {
+		return activeScreen;
+	}
+
+	public void setActiveScreen(IScreen activeScreen) {
+		this.activeScreen = activeScreen;
+	}
+
+	public Gotchi getGotchi() {
+		return gotchi;
+	}
+
+	public void setGotchi(Gotchi gotchi) {
+		this.gotchi = gotchi;
+	}
 
 	public void start() {
-		gotchi = new Cat("Murmur");
-		activeScreen = new GotchiScreen(gotchi);
+		createScreen = new CreateScreen(this);
+		activeScreen = createScreen;
 
 		while (!Javagotchi.Exit) {
 			Draw();
-			gotchi.Update();
+			if (gotchi != null) {
+				gotchi.Update();
+			}
+
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
@@ -25,22 +46,17 @@ public class MainScreen extends ConsoleKeyListener implements IDrawable {
 		clearScreen();
 
 		// print the Header
-		System.out.println("╔══════════════════════════════════════════════════════════════════════════════╗");
-		System.out.println("║ Javagotchi " + Javagotchi.VERSION + Utils.padLeft(gotchi.getName(), 60) + " ║");
-		System.out.println("╟──────────────────────────────────────────────────────────────────────────────╢");
-
-		switch (state) {
-		case CreateGotchi:
-			System.out.println("create");
-			break;
-		case GotchiScreen:
-			activeScreen.Draw();
-			break;
-		case ChooseAction:
-			System.out.println("action");
-			break;
+		if (gotchi == null) {
+			System.out.println("╔══════════════════════════════════════════════════════════════════════════════╗");
+			System.out.println("║ Javagotchi " + Javagotchi.VERSION + "                                                             ║");
+			System.out.println("╟──────────────────────────────────────────────────────────────────────────────╢");
+		} else {
+			System.out.println("╔══════════════════════════════════════════════════════════════════════════════╗");
+			System.out.println("║ Javagotchi " + Javagotchi.VERSION + Utils.padLeft(gotchi.getName(), 60) + " ║");
+			System.out.println("╟──────────────────────────────────────────────────────────────────────────────╢");
 		}
 
+		activeScreen.Draw();
 	}
 
 	/**
@@ -48,9 +64,11 @@ public class MainScreen extends ConsoleKeyListener implements IDrawable {
 	 */
 	private void clearScreen() {
 		// just move content out of view
-		for (int i = 0; i < 50; ++i) {
-			System.out.println("\n");
+		String out = "";
+		for (int i = 0; i < 30; ++i) {
+			out += "\n";
 		}
+		System.out.print(out);
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -60,9 +78,5 @@ public class MainScreen extends ConsoleKeyListener implements IDrawable {
 			activeScreen.keyReleased(e);
 			// System.out.println(e.getKeyCode());
 		}
-	}
-
-	public enum GameState {
-		GotchiScreen, CreateGotchi, ChooseAction
 	}
 }
