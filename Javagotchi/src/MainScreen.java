@@ -8,37 +8,39 @@ public class MainScreen extends ConsoleKeyListener implements IDrawable {
 	public void start() {
 		gotchi = new Cat("Murmur");
 		activeScreen = new GotchiScreen(gotchi);
-		Draw();
-	}
 
-	@Override
-	public void Draw() {
 		while (!Javagotchi.Exit) {
-			clearScreen();
-
-			// print the Header
-			System.out.println("╔══════════════════════════════════════════════════════════════════════════════╗");
-			System.out.println("║ Javagotchi " + Javagotchi.VERSION + "                                                             ║");
-			System.out.println("╟──────────────────────────────────────────────────────────────────────────────╢");
-
-			switch (state) {
-			case CreateGotchi:
-				System.out.println("create");
-				break;
-			case GotchiScreen:
-				activeScreen.Draw();
-				break;
-			case ChooseAction:
-				System.out.println("action");
-				break;
-			}
-
+			Draw();
+			gotchi.Update();
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public void Draw() {
+		clearScreen();
+
+		// print the Header
+		System.out.println("╔══════════════════════════════════════════════════════════════════════════════╗");
+		System.out.println("║ Javagotchi " + Javagotchi.VERSION + Utils.padLeft(gotchi.getName(), 60) + " ║");
+		System.out.println("╟──────────────────────────────────────────────────────────────────────────────╢");
+
+		switch (state) {
+		case CreateGotchi:
+			System.out.println("create");
+			break;
+		case GotchiScreen:
+			activeScreen.Draw();
+			break;
+		case ChooseAction:
+			System.out.println("action");
+			break;
+		}
+
 	}
 
 	/**
@@ -52,17 +54,14 @@ public class MainScreen extends ConsoleKeyListener implements IDrawable {
 	}
 
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() == 27)
-		{
+		if (e.getKeyCode() == 27) {
 			System.exit(0);
-		}
-		else
-		{
+		} else {
 			activeScreen.keyReleased(e);
-			//System.out.println(e.getKeyCode());
+			// System.out.println(e.getKeyCode());
 		}
 	}
-	
+
 	public enum GameState {
 		GotchiScreen, CreateGotchi, ChooseAction
 	}

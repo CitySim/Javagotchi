@@ -1,17 +1,14 @@
 import java.util.Random;
 
 public abstract class Gotchi {
-	private long lastTick = 0;
 	private GotchiState state = GotchiState.DEFAULT;
 	private String name = "";
-	private double age = 0.0;
 	
+	private double age = 0.0;
 	private int hunger = 0;
 	private int muedigkeit = 0;
 	private int langeweile = 0;
 	private int updatePlus;
-
-	private int starvation = 0;
 
 	// getter setter start
 
@@ -31,19 +28,22 @@ public abstract class Gotchi {
 		return age;
 	}
 
-	public int getStarvation() {
-		return starvation;
+	public int getHunger() {
+		return hunger;
 	}
 
-	public void setStarvation(int starvation) {
-		this.starvation = starvation;
+	public int getMuedigkeit() {
+		return muedigkeit;
 	}
 
+	public int getLangeweile() {
+		return langeweile;
+	}
+	
 	// getter setter end
 
 	public Gotchi(String name) {
 		this.name = name;
-		lastTick = System.currentTimeMillis();
 	}
 
 	public abstract String[] getSleepImage();
@@ -67,24 +67,18 @@ public abstract class Gotchi {
 			return getDefaultImage();
 		}
 	}
-	
-	public void Update(long tick)
-	{
-		// only update all 2s
-		if (tick - lastTick > 2000) {
-			age += 0.48; // randomly chosen random number
-			
-			lastTick = tick;
-		}
-	}
-	
-	// erhöht einen zufälligen Statuswert um 1 oder ruft mit 25%iger Chance rekursiv
-	// die überladene Methode auf und erhöht einen zufälligen Statuswert um die Anzahl der Durchgänge
-	
-	public void updateStats() {
+
+	/**
+	 * erhöht einen zufälligen Statuswert um 1 oder ruft mit 25%iger Chance
+	 * rekursiv die überladene Methode auf und erhöht einen zufälligen
+	 * Statuswert um die Anzahl der Durchgänge
+	 */
+	public void Update() {
 		Random rand = new Random();
 		int randomNumber = rand.nextInt(100);
-		
+
+		age += 0.48; // randomly chosen random number
+
 		if (randomNumber < 26) {
 			hunger++;
 		} else if (randomNumber < 51) {
@@ -93,16 +87,15 @@ public abstract class Gotchi {
 			langeweile++;
 		} else {
 			updatePlus = 2;
-			this.updateStats(updatePlus);
+			Update(updatePlus);
 		}
 	}
-	
+
 	// Überladung
-	
-	public void updateStats(int plus) {
+	public void Update(int plus) {
 		Random rand = new Random();
 		int randomNumber = rand.nextInt(100);
-		
+
 		if (randomNumber < 26) {
 			hunger = hunger + plus;
 		} else if (randomNumber < 51) {
@@ -111,7 +104,7 @@ public abstract class Gotchi {
 			langeweile = langeweile + plus;
 		} else {
 			updatePlus++;
-			this.updateStats(updatePlus);
+			Update(updatePlus);
 		}
 	}
 }

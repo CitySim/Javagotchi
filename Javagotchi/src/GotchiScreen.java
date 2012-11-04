@@ -20,7 +20,7 @@ public class GotchiScreen implements IScreen {
 
 		// print image
 		for (int i = 0; i < gotchiArt.length; i++) {
-			System.out.println("║" + centerString(gotchiArt[i], 80 - 2) + "║");
+			System.out.println("║" + Utils.centerString(gotchiArt[i], 80 - 2) + "║");
 		}
 		// fill up to always have 15 lines for image
 		for (int i = gotchiArt.length; i < 15; i++) {
@@ -28,30 +28,14 @@ public class GotchiScreen implements IScreen {
 		}
 
 		// print the Footer
-		String formatStarvation = padLeft(String.valueOf(gotchi.getStarvation()), 3);
+		String formatAge = Utils.padLeft(String.valueOf((int)gotchi.getAge()), 3);
+		String formatHunger = Utils.padLeft(String.valueOf(gotchi.getHunger()), 3);
+		String formatLangeweile = Utils.padLeft(String.valueOf(gotchi.getLangeweile()), 3);
+		String formatMuedigkeit = Utils.padLeft(String.valueOf(gotchi.getMuedigkeit()), 3);
+		
 		System.out.println("╟─────────────┬────────────────┬─────────────────┬────────────┬────────────────╢");
-		System.out.println("║ Hunger: " + formatStarvation + " │ Müdigkeit: 000 │ Langeweile: 000 │ Alter: 000 │     Aktion [E] ║");
+		System.out.println("║ Hunger: " + formatHunger + " │ Müdigkeit: " + formatMuedigkeit + " │ Langeweile: " + formatLangeweile + " │ Alter: " + formatAge + " │     Aktion [E] ║");
 		System.out.println("╚═════════════╧════════════════╧═════════════════╧════════════╧════════════════╝");
-	}
-
-	private String centerString(String content, int len) {
-		content = padLeft(content, (len + content.length()) / 2);
-		content = padRight(content, len);
-		return content;
-	}
-
-	private String padLeft(String content, int len) {
-		while (content.length() < len) {
-			content = " " + content;
-		}
-		return content;
-	}
-
-	private String padRight(String content, int len) {
-		while (content.length() < len) {
-			content = content + " ";
-		}
-		return content;
 	}
 
 	@Override
