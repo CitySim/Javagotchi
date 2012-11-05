@@ -13,7 +13,7 @@ public class GotchiScreen implements IScreen {
 		if (showActionSelect && gotchi.getState() == GotchiState.DEFAULT) {
 			System.out.println("║ Aktion durchführen                                                           ║");
 			System.out.println("║                                                                              ║");
-			System.out.println("║ Bitte wähle eines der verfügbaren Aktionnen!                                 ║");
+			System.out.println("║ Bitte wähle eine der verfügbaren Aktionen!                                   ║");
 			System.out.println("║                                                                              ║");
 			System.out.println("║       1) Füttern                                                             ║");
 			System.out.println("║                                                                              ║");
@@ -21,9 +21,9 @@ public class GotchiScreen implements IScreen {
 			System.out.println("║                                                                              ║");
 			System.out.println("║       3) Schlafen                                                            ║");
 			System.out.println("║                                                                              ║");
-			System.out.println("║ Bitte Drücke die Nummer der Aktion die du machen willst!                     ║");
+			System.out.println("║ Bitte drücke die Nummer der Aktion, die du machen willst!                    ║");
 			System.out.println("║                                                                              ║");
-			System.out.println("║ Drücke erneut [e] zum abzubrechen                                            ║");
+			System.out.println("║ Drücke erneut [e] zum Abbrechen                                              ║");
 			System.out.println("║                                                                              ║");
 			System.out.println("║                                                                              ║");
 		} else if (showActionSelect && gotchi.getState() != GotchiState.DEFAULT) {
@@ -39,7 +39,7 @@ public class GotchiScreen implements IScreen {
 			System.out.println("║                                                                              ║");
 			System.out.println("║                                                                              ║");
 			System.out.println("║                                                                              ║");
-			System.out.println("║ Drücke erneut [e] zum abzubrechen                                            ║");
+			System.out.println("║ Drücke erneut [e] zum Abbrechen                                              ║");
 			System.out.println("║                                                                              ║");
 			System.out.println("║                                                                              ║");
 		} else {

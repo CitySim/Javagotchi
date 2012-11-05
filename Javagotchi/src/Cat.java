@@ -35,7 +35,7 @@ public class Cat extends Gotchi {
 		if (playFrameCounter == 0) {
 			r[0] = ("    |\\__/,|   (`\\ ");
 			r[1] = ("  _.|o o  |_   ) )");
-			r[2] = ("-(((---(((-e-------");
+			r[2] = ("-(((---(((---------");
 			playFrameCounter = 1;
 		} else {
 			r[0] = ("                   ");

@@ -9,7 +9,7 @@ public class CreateScreen implements IScreen {
 
 	@Override
 	public void Draw() {
-		System.out.println("║ Willkoemmen bei Javagotchi                                                   ║");
+		System.out.println("║ Willkommen bei Javagotchi                                                    ║");
 		System.out.println("║                                                                              ║");
 		System.out.println("║ Bitte wähle eines der verfügbaren Javagotchie!                               ║");
 		System.out.println("║                                                                              ║");
@@ -19,10 +19,10 @@ public class CreateScreen implements IScreen {
 		System.out.println("║                                                                              ║");
 		System.out.println("║       3) Bunny                                                               ║");
 		System.out.println("║                                                                              ║");
-		System.out.println("║ Bitte Drücke die Nummer des Javagotchie das du haben willst!                 ║");
+		System.out.println("║ Bitte drücke die Nummer des Javagotchie, das du haben willst!                ║");
 		System.out.println("║                                                                              ║");
 		System.out.println("║ Dein Javagotchie hat Hunger, will schlafen und spielen. Wenn eines seiner    ║");
-		System.out.println("║ Bedürfnisse über 500 steigt wird es sterben!                                 ║");
+		System.out.println("║ Bedürfnisse über 500 steigt, wird es sterben!                                ║");
 		System.out.println("║                                                                              ║");
 		System.out.println("║       Viel Spaß!                                                             ║");
 		System.out.println("║                                                                              ║");

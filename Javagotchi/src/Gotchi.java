@@ -124,11 +124,25 @@ public abstract class Gotchi {
 			System.exit(0);
 		}
 
-		// nach einer gweissen zeit hört der Gotchi mit einer aktion auf und
-		// weschelt zurück zum Default status
+		// nach einer gewissen zeit hört der Gotchi mit einer aktion auf und
+		// wechselt zurück zum Default status
 		if (state != GotchiState.DEFAULT) {
+			// verhindern, dass animationen zu schnell ablaufen
+			try {
+				Thread.sleep(150);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			int stopAction = rand.nextInt(100);
-			if (stopAction > 95) {
+			if (stopAction > 90) {
+				// das ganze bild soll mindestens 2 sekunden lang angezeigt werden
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				state = GotchiState.DEFAULT;
 			}
 		}
