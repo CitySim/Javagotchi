@@ -21,7 +21,10 @@ public class ConsoleKeyListener extends Frame implements KeyListener {
 	 * öffnet das Fenster und setzt den Listener
 	 */
 	public ConsoleKeyListener() {
+		// bestimmt den Fenstertitel
 		super("Javagotchi KeyListener");
+
+		// im Fenster gibt es ein Label und ein Panel
 		Panel p = new Panel();
 		l1 = new Label("Javagotchi Key Input");
 		p.add(l1);
@@ -32,6 +35,7 @@ public class ConsoleKeyListener extends Frame implements KeyListener {
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
+				// programm beenden wenn fenster geschlossen wird
 				System.exit(0);
 			}
 		});
@@ -43,7 +47,7 @@ public class ConsoleKeyListener extends Frame implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 		// l1.setText("Key Typed" + e.getKeyCode());
 	}
-	
+
 	/**
 	 * Wird nicht genutzt, durch Interface vorgeschrieben
 	 */

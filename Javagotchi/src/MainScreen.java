@@ -4,8 +4,6 @@ public class MainScreen extends ConsoleKeyListener implements IDrawable {
 	private Gotchi gotchi = null;
 	
 	private IScreen activeScreen = null;
-	private GotchiScreen gotchiScreen = null;
-	private CreateScreen createScreen = null;
 
 	public IScreen getActiveScreen() {
 		return activeScreen;
@@ -24,10 +22,9 @@ public class MainScreen extends ConsoleKeyListener implements IDrawable {
 	}
 
 	public void start() {
-		createScreen = new CreateScreen(this);
-		activeScreen = createScreen;
+		activeScreen = new CreateScreen(this);;
 
-		while (!Javagotchi.Exit) {
+		while (true) {
 			Draw();
 			if (gotchi != null) {
 				gotchi.Update();

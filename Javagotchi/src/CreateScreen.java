@@ -1,13 +1,28 @@
 import java.awt.event.KeyEvent;
 
+/**
+ * Bildschirm in den der Spieler sein Gotchi wählen kann
+ */
 public class CreateScreen implements IScreen {
+	/**
+	 * Referenz auf den MainScreen, um dort das Gotchi und den activeScreen zu
+	 * ändern
+	 */
 	MainScreen mainScreen = null;
 
+	/**
+	 * erstellt einen neuen Auswahlbildshirm für Gotchie
+	 * 
+	 * @param mainScreen
+	 *            Instanz des MainScreen
+	 */
 	public CreateScreen(MainScreen mainScreen) {
 		this.mainScreen = mainScreen;
 	}
 
-	@Override
+	/**
+	 * zeichnet die Auswahl des Gotchie und eine kurze Info zum Spielablauf
+	 */
 	public void Draw() {
 		System.out.println("║ Willkommen bei Javagotchi                                                    ║");
 		System.out.println("║                                                                              ║");
@@ -29,8 +44,11 @@ public class CreateScreen implements IScreen {
 		System.out.println("╚══════════════════════════════════════════════════════════════════════════════╝");
 	}
 
-	@Override
+	/**
+	 * erzeugt je nach Taste ein Gotchi und setzt den activeScreen
+	 */
 	public void keyReleased(KeyEvent e) {
+		// je nach Taste das passende Gotchi erzeugen
 		switch (e.getKeyChar()) {
 		case '1':
 			mainScreen.setGotchi(new Dog("Bello"));
@@ -42,8 +60,10 @@ public class CreateScreen implements IScreen {
 			mainScreen.setGotchi(new Bunny("Hermine"));
 			break;
 		}
-		
-		if(mainScreen.getGotchi() != null) {
+
+		// falls ein gotchi erzeugt wurde wird ein GotchiScreen als activeScreen
+		// erzeugt und gesetzt
+		if (mainScreen.getGotchi() != null) {
 			mainScreen.setActiveScreen(new GotchiScreen(mainScreen.getGotchi()));
 		}
 	}

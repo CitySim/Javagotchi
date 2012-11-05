@@ -4,13 +4,32 @@ import java.util.Random;
  * specihert und simuliert ein "Gotchi"
  */
 public abstract class Gotchi {
+	/**
+	 * Status ob der Gotchi gerade schläft, spielt, ...
+	 */
 	private GotchiState state = GotchiState.DEFAULT;
+	/**
+	 * Der Name des Gotchie
+	 */
 	private String name = "";
 
+	/**
+	 * Alter des Gotchi
+	 */
 	private double age = 0.0;
+	/**
+	 * Wie viel Hunger das Gotchi hat
+	 */
 	private int hunger = 0;
+	/**
+	 * Wie Müde das Gotchi ist
+	 */
 	private int muedigkeit = 0;
+	/**
+	 * wie langweilig dem Gotchi ist
+	 */
 	private int langeweile = 0;
+
 	private int updatePlus;
 
 	// getter setter start
@@ -45,22 +64,48 @@ public abstract class Gotchi {
 
 	// getter setter end
 
+	/**
+	 * erzeugt einen Gotchi mit Namen
+	 * 
+	 * @param name
+	 *            Name des neuen Gotchi
+	 */
 	public Gotchi(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * gibt das Bild des schlafenden Gotchi zurück
+	 * 
+	 * @return String[] mit dem zeilen des Bildes
+	 */
 	public abstract String[] getSleepImage();
 
+	/**
+	 * gibt das Bild des spielenden Gotchi zurück
+	 * 
+	 * @return String[] mit dem zeilen des Bildes
+	 */
 	public abstract String[] getPlayImage();
 
+	/**
+	 * gibt das Bild des essenden Gotchi zurück
+	 * 
+	 * @return String[] mit dem zeilen des Bildes
+	 */
 	public abstract String[] getEatImage();
 
+	/**
+	 * gibt das Bild des Gotchi zurück
+	 * 
+	 * @return String[] mit dem zeilen des Bildes
+	 */
 	public abstract String[] getDefaultImage();
 
 	/**
 	 * gibt anhand des Status das passende Bild zurück
 	 * 
-	 * @return
+	 * @return String[] mit dem zeilen des Bildes
 	 */
 	public String[] getImage() {
 		switch (state) {
@@ -136,7 +181,8 @@ public abstract class Gotchi {
 			}
 			int stopAction = rand.nextInt(100);
 			if (stopAction > 90) {
-				// das ganze bild soll mindestens 2 sekunden lang angezeigt werden
+				// das ganze bild soll mindestens 2 sekunden lang angezeigt
+				// werden
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
@@ -148,7 +194,12 @@ public abstract class Gotchi {
 		}
 	}
 
-	// Überladung
+	/**
+	 * Überladung der Update Methode die einen Status Wert stärker erhöht
+	 * 
+	 * @param plus
+	 *            um wie viel der Wert erhöht wird
+	 */
 	public void Update(int plus) {
 		Random rand = new Random();
 		int randomNumber = rand.nextInt(100);
