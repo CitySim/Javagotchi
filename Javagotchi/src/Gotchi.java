@@ -8,6 +8,7 @@ public abstract class Gotchi {
 	 * Status ob der Gotchi gerade schläft, spielt, ...
 	 */
 	private GotchiState state = GotchiState.DEFAULT;
+	private long startTimer = 0;
 	/**
 	 * Der Name des Gotchie
 	 */
@@ -40,6 +41,7 @@ public abstract class Gotchi {
 
 	public void setState(GotchiState state) {
 		this.state = state;
+		startTimer = System.currentTimeMillis();
 	}
 
 	public String getName() {
@@ -179,16 +181,13 @@ public abstract class Gotchi {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+
 			int stopAction = rand.nextInt(100);
-			if (stopAction > 90) {
+			// nur abbrechen wenn min. 2000ms vergangen sind
+			if (stopAction > 95 && System.currentTimeMillis() - startTimer > 2000) {
 				// das ganze bild soll mindestens 2 sekunden lang angezeigt
 				// werden
-				try {
-					Thread.sleep(2000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+
 				state = GotchiState.DEFAULT;
 			}
 		}
